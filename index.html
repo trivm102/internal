@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng Dụng Quản Lý Vi Phạm</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #03a9fc;
+        }
+        .container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        .active {
+            display: flex;
+        }
+        .header {
+            background-color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .content {
+            margin-top: 80px;
+            width: 100%;
+            text-align: center;
+            flex-grow: 1;
+            padding: 10px;
+        }
+        .news-list, .news-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px; 
+        }
+        .news-item {
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 90%;
+            text-align: left;
+        }
+        .news-grid .news-item {
+            width: 45%;
+        }
+        .news-item img {
+            width: 100%;
+            /* height: auto; */
+            aspect-ratio: 1;
+            border-radius: 5px;
+        }
+        .news-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .news-desc {
+            font-size: 14px;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+        }
+        .nav-item {
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-btn, .news-btn, .input-info-btn, .search-info-btn, .logout-btn {
+            background-color: #fc0303;
+            color: white;
+            cursor: pointer;
+        }
+        .input-field {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-results {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function showScreen(screenId) {
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.remove('active');
+            });
+            const screen = document.getElementById(screenId);
+            if (screen) {
+                screen.classList.add('active');
+            } else {
+                console.error("Screen with ID " + screenId + " not found.");
+            }
+        }
+        function searchViolation() {
+            document.getElementById("search-results").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <!-- Màn hình Login -->
+    <div id="login" class="container active">
+        <h2>Đăng Nhập</h2>
+        <input type="text" placeholder="Tên đăng nhập">
+        <input type="password" placeholder="Mật khẩu">
+        <button class="login-btn" onclick="showScreen('home')">Đăng nhập</button>
+    </div>
+    
+    <!-- Màn hình Trang Chủ -->
+    <div id="home" class="container">
+        <div class="header">Trang Chủ</div>
+        <div class="content">
+            <h3></h3>
+            <div class="news-list">
+                <div class="news-item">
+                    <img src="https://picsum.photos/200/300?random=1" alt="news image">
+                    <p class="news-title">Tin Tức 1</p>
+                    <p class="news-desc">Mô tả tin tức 1...</p>
+                </div>
+                <div class="news-item">
+                    <img src="https://picsum.photos/200/300?random=2" alt="news image">
+                    <p class="news-title">Tin Tức 2</p>
+                    <p class="news-desc">Mô tả tin tức 2...</p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="showScreen('home')">🏠 Trang Chủ</div>
+            <div class="nav-item" onclick="showScreen('input-info')">📝 Nhập Thông Tin</div>
+            <div class="nav-item" onclick="showScreen('search-info')">🔍 Tìm Kiếm</div>
+            <div class="nav-item" onclick="showScreen('profile')">👤 Hồ Sơ</div>
+        </div>
+    </div>
+    
+    <!-- Màn hình Nhập Thông Tin Người Vi Phạm -->
+    <div id="input-info" class="container">
+        <div class="header">
+            <div class="nav-item" onclick="showScreen('home')">⬅</div>
+            <span>Nhập Thông Tin Người Vi Phạm</span>
+        </div>
+        <div class="content">
+            <h2></h2>
+            <input class="input-field" type="text" placeholder="Họ và Tên">
+            <input class="input-field" type="text" placeholder="Số Căn Cước Công Dân">
+            <input class="input-field" type="text" placeholder="Số Điện Thoại">
+            <input class="input-field" type="text" placeholder="Giới Tính">
+            <input class="input-field" type="date" placeholder="Ngày Sinh">
+            <input class="input-field" type="datetime-local" placeholder="Thời Gian Vi Phạm">
+            <input class="input-field" type="file" accept="image/*">
+            <button class="input-info-btn">Lưu Thông Tin</button>
+        </div>
+    </div>
+    
+    <!-- Màn hình Tìm Kiếm Người Vi Phạm -->
+    <div id="search-info" class="container">
+        <div class="header">
+            <div class="nav-item" onclick="showScreen('home')">⬅</div>
+            <span>Tìm Kiếm Người Vi Phạm</span>
+        </div>
+        <div class="content">
+            <input class="input-field" type="text" placeholder="Nhập tên hoặc số CCCD">
+            <button class="search-info-btn" onclick="searchViolation()">Tìm Kiếm</button>
+            <div id="search-results" class="search-results">
+                <p><strong>Họ và Tên:</strong> Trần Văn B</p>
+                <p><strong>Số CCCD:</strong> 123456789012</p>
+                <p><strong>Số Điện Thoại:</strong> 0987654321</p>
+                <p><strong>Giới Tính:</strong> Nam</p>
+                <p><strong>Ngày Sinh:</strong> 01/01/1990</p>
+                <p><strong>Thời Gian Vi Phạm:</strong> 10:30 AM, 20/02/2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Màn hình Hồ Sơ Người Dùng -->
+    <div id="profile" class="container">
+        <div class="header">
+            <div class="nav-item" onclick="showScreen('home')">⬅</div>
+            <span>Hồ Sơ Người Dùng</span>
+        </div>
+        <div class="content">
+            <p><strong>Họ và Tên:</strong> Nguyễn Văn A</p>
+            <p><strong>Email:</strong> nguyenvana@example.com</p>
+            <p><strong>Số Điện Thoại:</strong> 0123456789</p>
+            <p><strong>Địa Chỉ:</strong> 123 Đường ABC, TP.HCM</p>
+            <button class="logout-btn" onclick="showScreen('login')">Đăng Xuất</button>
+        </div>
+    </div>
+</body>
+</html>
