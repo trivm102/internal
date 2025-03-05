@@ -217,8 +217,7 @@
             <input class="input-field" type="text" placeholder="Giới Tính">
             <div style="text-align: left;">
                 <p>Ngày Sinh:</p>
-                <input type="text" class="editable input-field" placeholder="Ngày Sinh" value="01-01-1900" 
-    onfocus="this.type='date'" onblur="if(this.value===''){this.type='text'}" readonly>
+                <input class="input-field" type="date" onfocus="this.showPicker()" placeholder="DD-MM-YYYY">
             </div>
             <div style="text-align: left;">
                 <p>Thời Gian Vi Phạm:</p>
