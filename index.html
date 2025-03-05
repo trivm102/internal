@@ -123,6 +123,15 @@
             text-align: left;
             margin-top: 20px;
         }
+        .edit-btn, .save-btn {
+            background-color: #0288d1;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
     </style>
     <script>
         function showScreen(screenId) {
@@ -138,6 +147,21 @@
         }
         function searchViolation() {
             document.getElementById("search-results").style.display = "block";
+        }
+        function enableEdit() {
+            document.querySelectorAll(".editable").forEach(input => {
+                input.removeAttribute("readonly");
+                input.style.border = "1px solid #000";
+            });
+            document.getElementById("save-btn").style.display = "block";
+        }
+        
+        function saveInfo() {
+            document.querySelectorAll(".editable").forEach(input => {
+                input.setAttribute("readonly", true);
+                input.style.border = "none";
+            });
+            document.getElementById("save-btn").style.display = "none";
         }
     </script>
 </head>
@@ -205,15 +229,22 @@
             <span>Tìm Kiếm Người Vi Phạm</span>
         </div>
         <div class="content">
+            <h1></h1>
             <input class="input-field" type="text" placeholder="Nhập tên hoặc số CCCD">
             <button class="search-info-btn" onclick="searchViolation()">Tìm Kiếm</button>
-            <div id="search-results" class="search-results">
-                <p><strong>Họ và Tên:</strong> <input type="text" class="editable input-field" value="Trần Văn B" readonly></p>
-                <p><strong>Số CCCD:</strong> <input type="text" class="editable input-field" value="123456789012" readonly></p>
-                <p><strong>Số Điện Thoại:</strong> <input type="text" class="editable input-field" value="0987654321" readonly></p>
-                <p><strong>Giới Tính:</strong> <input type="text" class="editable input-field" value="Nam" readonly></p>
-                <p><strong>Ngày Sinh:</strong> <input type="text" class="editable input-field" value="01/01/1990" readonly></p>
-                <p><strong>Thời Gian Vi Phạm:</strong> <input type="text" class="editable input-field" value="10:30 AM, 20/02/2025" readonly></p>
+            <div id="search-results" class="search-results" style="display: none;">
+                <p><strong>Họ và Tên:</strong></p>
+                <p><input type="text" class="editable input-field" value="Trần Văn B" readonly></p>
+                <p><strong>Số CCCD:</strong></p>
+                <p><input type="text" class="editable input-field" value="123456789012" readonly></p>
+                <p><strong>Số Điện Thoại:</strong></p>
+                <p><input type="text" class="editable input-field" value="0987654321" readonly></p>
+                <p><strong>Giới Tính:</strong></p>
+                <p><input type="text" class="editable input-field" value="Nam" readonly></p>
+                <p><strong>Ngày Sinh:</strong></p>
+                <p><input type="text" class="editable input-field" value="01/01/1990" readonly></p>
+                <p><strong>Thời Gian Vi Phạm:</strong></p>
+                <p><input type="text" class="editable input-field" value="10:30 AM, 20/02/2025" readonly></p>
                 <button class="edit-btn" onclick="enableEdit()">Chỉnh Sửa</button>
                 <button id="save-btn" class="save-btn" onclick="saveInfo()" style="display: none;">Lưu</button>
             </div>
