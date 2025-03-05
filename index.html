@@ -208,12 +208,14 @@
             <input class="input-field" type="text" placeholder="Nhập tên hoặc số CCCD">
             <button class="search-info-btn" onclick="searchViolation()">Tìm Kiếm</button>
             <div id="search-results" class="search-results">
-                <p><strong>Họ và Tên:</strong> Trần Văn B</p>
-                <p><strong>Số CCCD:</strong> 123456789012</p>
-                <p><strong>Số Điện Thoại:</strong> 0987654321</p>
-                <p><strong>Giới Tính:</strong> Nam</p>
-                <p><strong>Ngày Sinh:</strong> 01/01/1990</p>
-                <p><strong>Thời Gian Vi Phạm:</strong> 10:30 AM, 20/02/2025</p>
+                <p><strong>Họ và Tên:</strong> <input type="text" class="editable input-field" value="Trần Văn B" readonly></p>
+                <p><strong>Số CCCD:</strong> <input type="text" class="editable input-field" value="123456789012" readonly></p>
+                <p><strong>Số Điện Thoại:</strong> <input type="text" class="editable input-field" value="0987654321" readonly></p>
+                <p><strong>Giới Tính:</strong> <input type="text" class="editable input-field" value="Nam" readonly></p>
+                <p><strong>Ngày Sinh:</strong> <input type="text" class="editable input-field" value="01/01/1990" readonly></p>
+                <p><strong>Thời Gian Vi Phạm:</strong> <input type="text" class="editable input-field" value="10:30 AM, 20/02/2025" readonly></p>
+                <button class="edit-btn" onclick="enableEdit()">Chỉnh Sửa</button>
+                <button id="save-btn" class="save-btn" onclick="saveInfo()" style="display: none;">Lưu</button>
             </div>
         </div>
     </div>
