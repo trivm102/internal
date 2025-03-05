@@ -215,8 +215,14 @@
             <input class="input-field" type="text" placeholder="Số Căn Cước Công Dân">
             <input class="input-field" type="text" placeholder="Số Điện Thoại">
             <input class="input-field" type="text" placeholder="Giới Tính">
-            <input class="input-field" type="date" placeholder="Ngày Sinh">
-            <input class="input-field" type="datetime-local" placeholder="Thời Gian Vi Phạm">
+            <div style="text-align: left;">
+                <p>Ngày Sinh:</p>
+                <input class="input-field" type="date" onfocus="this.showPicker()" placeholder="DD-MM-YYYY">
+            </div>
+            <div style="text-align: left;">
+                <p>Thời Gian Vi Phạm:</p>
+                <input class="input-field" type="datetime-local" onfocus="this.showPicker()" placeholder="DD-MM-YYYY hh:mm">
+            </div>
             <input class="input-field" type="file" accept="image/*">
             <button class="input-info-btn">Lưu Thông Tin</button>
         </div>
