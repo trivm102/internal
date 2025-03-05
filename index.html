@@ -9,7 +9,10 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #C1D8C3;
+            max-width: 390px;
+            overflow-x: hidden;
+            /* background-color: #C1D8C3; */
+            
         }
         .container {
             display: none;
@@ -17,8 +20,10 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            max-width: 390px;
             padding: 20px;
             text-align: center;
+            background-color: #C1D8C3;
         }
         .active {
             display: flex;
@@ -29,6 +34,7 @@
             font-size: 24px;
             font-weight: bold;
             width: 100%;
+            max-width: 390px;
             position: fixed;
             top: 0;
             left: 0;
@@ -48,9 +54,11 @@
         .content {
             margin-top: 80px;
             width: 100%;
+            max-width: 390px;
             text-align: center;
             flex-grow: 1;
             padding: 10px;
+            background-color: #C1D8C3;
         }
         .news-list, .news-grid {
             display: flex;
@@ -87,6 +95,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
+            max-width: 390px;
             background-color: white;
             display: flex;
             justify-content: space-around;
@@ -124,10 +133,10 @@
             margin-top: 20px;
         }
         .edit-btn, .save-btn {
+            width: 100%;
             background-color: #0288d1;
             color: white;
             cursor: pointer;
-            padding: 10px;
             border: none;
             border-radius: 5px;
             margin-top: 10px;
@@ -163,6 +172,7 @@
             });
             document.getElementById("save-btn").style.display = "none";
         }
+        
     </script>
 </head>
 <body>
@@ -215,7 +225,8 @@
             <input class="input-field" type="text" placeholder="Số Căn Cước Công Dân">
             <input class="input-field" type="text" placeholder="Số Điện Thoại">
             <input class="input-field" type="text" placeholder="Giới Tính">
-           <div style="text-align: left;">
+            
+            <div style="text-align: left;">
                 <p>Ngày Sinh:</p>
                 <input class="input-field" type="date" onfocus="this.showPicker()" placeholder="DD-MM-YYYY" value="01-01-1900">
             </div>
